@@ -1,56 +1,116 @@
-# Welcome to your Expo app 👋
+# Mobile Programming - Module 1: Basic Syntax & UI
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Project Information
+- Course: Mobile Programming Laboratory
+- Institution: University of Muhammadiyah Malang (Informatics Laboratory)
+- Module: Module 1 - Basic Syntax & User Interface
+- Project Theme: Restaurant Application (Cupertino Bistro)
+- Framework: React Native with Expo Router
+- Language: TypeScript
 
-## Get started
+---
 
-1. Install dependencies
+## 1. Project Overview
+This project represents the practical implementation of Mobile Programming Module 1. It delivers a mobile application designed under modern mobile interface guidelines (Apple iOS Human Interface Guidelines), featuring an interactive restaurant menu with categorization, real-time search filtering, dynamic cart calculation, and clean separation between layout styling and business logic.
 
+The codebase strictly adheres to the grading criteria established in the assessment section of Module 1.
+
+---
+
+## 2. Fulfillment of Assessment Criteria
+
+### 2.1. Custom Function Declarations and Loops
+- Function `calculateTotalCost`: Implements a traditional primitive `for` loop to iterate through the list of selected menu items and compute the aggregated order total.
+- Function `filterMenuItems`: Accepts the menu array, selected category, and search query string to filter items dynamically based on compound conditional evaluation.
+- Function `formatPrice`: Utility function that formats numeric amounts into two-decimal currency strings.
+- JSX Iteration: Employs `.map()` loops to render the list of category selection pills and individual food menu cards.
+
+### 2.2. Type and Array of Objects
+- Union Type (`FoodCategory`): Defines a strict union type constraining category values to `"all" | "burgers" | "pizza" | "desserts" | "drinks"`.
+- Interface (`MenuItem`): Defines the formal shape of restaurant menu items, featuring:
+  - `readonly id: string`: Immutable unique identifier.
+  - Required fields: `name: string`, `price: number`, `description: string`, `category: FoodCategory`, `rating: number`, `calories: number`, `emoji: string`.
+  - Optional field: `isPopular?: boolean`.
+- Array of Objects (`RESTAURANT_MENU`): A fully typed array containing structured culinary dishes conforming to the `MenuItem` interface.
+
+### 2.3. Inline and External Styling
+- External Styling (`src/app/styles.ts`): Built with `StyleSheet.create` to maintain separation of concerns. Contains structured definitions for containers, typography, card elevation, soft shadows, rounded corners, and spacing.
+- Inline Styling (`src/app/index.tsx`): Strategically applied using `style={{ ... }}` for dynamic and state-dependent properties, including:
+  - Active and inactive background color transitions for category filter pills.
+  - Search input container layout and padding adjustments.
+  - Conditional badge highlighting for popular items.
+
+### 2.4. Core React Native Components & Packages
+- Native Components: `View`, `Text`, `TextInput`, `ScrollView`, `TouchableOpacity`, `StatusBar`.
+- Third-Party Packages: `@expo/vector-icons` (`Ionicons`) for navigation, search, rating indicators, and interactive button icons.
+
+---
+
+## 3. Codelabs Overview (Laboratory Exercises)
+The repository also includes the laboratory codelab exercises completed during the module:
+- Codelab 1 (Section 3.1): Basic internal styling using `StyleSheet.create`.
+- Codelab 2: Core React Native components (`View`, `Text`, `TextInput`, `Button`).
+- Codelab 3: Custom component styling with layout and border definitions.
+- Codelab 4: Vector icons integration (`Ionicons`) and custom touchable button components.
+- Codelab 5: Standalone TypeScript exercise demonstrating interfaces, conditions, array mapping, and console output (`exercise.ts`).
+
+---
+
+## 4. Directory Structure
+```
+MyApp/
+├── src/
+│   ├── app/
+│   │   ├── _layout.tsx      # Main application layout and theme provider
+│   │   ├── index.tsx        # Main Restaurant application screen
+│   │   ├── styles.ts        # External styling stylesheet
+│   │   └── explore.tsx      # Inline styling demonstration screen
+│   ├── components/          # Reusable UI components and tab configurations
+│   ├── constants/           # Color palettes and global theme constants
+│   └── hooks/               # Custom hooks for theme and color schemes
+├── exercise.ts              # Codelab 5 standalone TypeScript script
+├── exercise.js              # Compiled JavaScript version for Node.js execution
+├── package.json             # Project dependencies and script declarations
+├── tsconfig.json            # TypeScript configuration
+└── README.md                # Project documentation
+```
+
+---
+
+## 5. Getting Started
+
+### Prerequisites
+- Node.js (version 18 or newer recommended)
+- npm or yarn
+- Expo Go application on iOS or Android (optional for mobile preview)
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Shafi-afeh/restaurant-app-mobile.git
+   cd restaurant-app-mobile
+   ```
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. Start the development server:
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+4. Run the Codelab 5 TypeScript script independently:
+   ```bash
+   node exercise.js
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+## 6. Verification and Type Safety
+The project passes strict TypeScript compilation with zero errors:
 ```bash
-npm run reset-project
+npx tsc --noEmit
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+All components are fully typed, clean, and ready for laboratory evaluation.
